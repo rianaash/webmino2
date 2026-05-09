@@ -51,13 +51,13 @@ body {
 
 .logo {
     position: absolute;
-    top: 10px;
-    left: 60px;
+    top: -90px;
+    left: 40px;
     z-index: 100;
 }
 
 .logo-img {
-    height: 200px;
+    height: 300px;
 }
 
 .nav-links {
@@ -139,7 +139,7 @@ body {
     background-repeat: no-repeat;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.8; /* Adjust if it's too bright */
+    opacity: 0.8;
 }
 
 .hero {
@@ -204,6 +204,26 @@ body {
     filter: blur(50px);
 }
 
+.middle-section {
+    width: 100%;
+    position: relative;
+}
+
+/* Middle Section Overlay */
+.middle-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/overlay2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    pointer-events: none;
+}
+
 /* Stats Strip */
 .stats-strip {
     display: flex;
@@ -213,6 +233,8 @@ body {
     border-top: 1px solid rgba(255,255,255,0.05);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     background: rgba(47, 36, 32, 0.3);
+    position: relative;
+    z-index: 2;
 }
 
 .stat-item {
@@ -274,6 +296,8 @@ body {
 .features {
     padding: 120px 80px;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .section-header {
@@ -341,6 +365,23 @@ body {
     align-items: center;
     padding: 120px 80px;
     gap: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Miner Section Overlay */
+.miner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/over.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .miner-image {
@@ -416,6 +457,23 @@ body {
 .expeditions {
     padding: 80px;
     text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Expeditions Overlay */
+.expeditions-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/overlay3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .expeditions h2 {
@@ -524,15 +582,31 @@ body {
     color: var(--color-text-muted);
 }
 
+/* Bottom Section Overlay */
+.bottom-section {
+    position: relative;
+    width: 100%;
+}
+
+.bottom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/bgg.png');
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* Footer */
 .site-footer {
     position: relative;
     padding: 150px 80px 40px;
     margin-top: 100px;
-    background-image: url('assets/bgg.png');
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
 }
 
 .footer-content {
@@ -545,7 +619,7 @@ body {
 }
 
 .footer-logo {
-    height: 100px;
+    height: 200px;
 }
 
 .footer-links {
