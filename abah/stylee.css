@@ -1,0 +1,80 @@
+:root {
+    --color-orange: #E6A84A;
+    --color-cyan: #3FA7C4;
+    --color-cyan-glow: #3FA7C420;
+    --color-bg-dark: #1F1714;
+    --color-bg-light: #2F2420;
+    --color-card-bg: #3B2F2A;
+    --color-text: #ddcbb0;
+    --color-text-muted: #f1dba4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.feature-section{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.phone-wrapper{
+  position: relative;
+  width: fit-content;
+}
+
+/* Gambar HP */
+.phone-img{
+  width: 320px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Semua Card */
+.floating-card{
+  position: absolute;
+  right: -220px;
+  width: 230px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Hover effect */
+.floating-card:hover{
+  transform: translateY(-8px) scale(1.03);
+  filter: brightness(1.08);
+}
+
+/* Biar gambar card full */
+.floating-card img{
+  width: 100%;
+  display: block;
+}
+
+/* Posisi masing-masing card */
+.card-1{
+  top: 70px;
+}
+
+.card-2{
+  top: 260px;
+}
+
+.card-3{
+  top: 450px;
+}
