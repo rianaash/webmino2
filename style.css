@@ -51,7 +51,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 80px;
+    padding: 20px 60px;
 
     background-image: url('assets/navbar-bg.png');
     background-size: cover;
@@ -70,19 +70,22 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.logo {
-    position: relative;
-    left: 150px;
+.logoo {
+    flex-shrink: 0;
 }
 
-.logo-img {
-
+.logoo-img {
     height: 40px;
+    display: block;
+}
+
+.nav-container {
+    display: contents;
 }
 
 .nav-links {
     display: flex;
-    gap: 40px;
+    gap: 32px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -96,6 +99,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -105,7 +109,7 @@ body {
 .nav-actions {
     display: flex;
     gap: 20px;
-    margin-right: 120px;
+    flex-shrink: 0;
 }
 
 .btn {
@@ -569,7 +573,7 @@ body {
 
 /* Expeditions */
 .expeditions {
-    padding: 80px;
+    padding: 100px 80px;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -591,14 +595,16 @@ body {
 }
 
 .expeditions h2{
-    font-size: 42px;
-    color: white;
+    font-size: 40px;
+    color: var(--color-orange);
     margin-bottom: 16px;
 }
 
 .expeditions p{
-    color: #cfcfcf;
-    margin-bottom: 50px;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 /* GRID */
@@ -611,8 +617,8 @@ body {
 
 /* CARD */
 .expedition-card{
-    width: 362.67px;
-    height: 259.99px;
+    width: 340px;
+    height: 220px;
 
     border-radius: 24px;
     background: #4A3F3A80;
@@ -639,8 +645,8 @@ body {
 
 /* ICON BOX */
 .icon-box{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 
     border-radius: 16px;
 
@@ -678,22 +684,21 @@ body {
 
 /* TITLE */
 .expedition-card h3{
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 600;
     color: #fff;
 
-    margin-bottom: 14px;
+    margin-bottom: 5px;
 }
 
 /* DESC */
 .expedition-card p{
-    width: 75%;
 
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.6;
 
     color: #d4d4d4;
-
+    white-space: nowrap;
     margin: 0;
 }
 
@@ -702,7 +707,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    padding: 80px;
+    padding: 120px;
 }
 
 .testimonial-card {
@@ -829,50 +834,110 @@ body {
     z-index: 2;
 }
 
-/* Responsive Design & Mobile Menu */
+/* =============================================
+   RESPONSIVE DESIGN & MOBILE MENU
+   ============================================= */
+
 .hamburger {
     display: none;
     background: none;
     border: none;
     color: var(--color-text);
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1001;
+    padding: 4px;
+    flex-shrink: 0;
 }
 
+/* Desktop: nav-container renders as if not there */
 .nav-container {
     display: contents;
 }
 
-@media (max-width: 1024px) {
+/* ── 800–1000px: navbar mulai sempit, switch ke hamburger lebih awal ── */
+@media (max-width: 1000px) {
     .navbar {
-        padding: 20px 40px;
-    }
-    
-    .logo {
-        left: 20px;
-        top: -60px;
-    }
-
-    .logo-img {
-        height: 200px;
+        padding: 16px 32px;
+        background-image: none;
+        background: rgba(20, 20, 20, 0.35);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
 
+    /* Sembunyikan nav links & tombol, tampilkan hamburger */
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* nav-container jadi dropdown panel (bukan fullscreen) */
+    .nav-container {
+        display: block;
+        position: absolute;
+        top: 100%; /* tepat di bawah navbar */
+        left: 0;
+        width: 100%;
+        background: rgba(25, 18, 15, 0.97);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        z-index: 998;
+    }
+
+    .nav-container.active {
+        max-height: 400px; /* cukup untuk konten */
+        padding: 24px 0 28px;
+    }
+
+    /* Paksa nav-links & nav-actions tampil dalam panel */
+    .nav-container .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        position: static;
+        transform: none;
+        margin-bottom: 24px;
+    }
+
+    .nav-container .nav-links a {
+        font-size: 16px;
+    }
+
+    .nav-container .nav-actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+/* ── Tablet: 768px ── */
+@media (max-width: 768px) {
     .hero {
         flex-direction: column;
         height: auto;
-        padding: 40px;
+        padding: 40px 24px;
         text-align: center;
-        margin-top: 60px;
-        gap: 60px;
+        margin-top: 80px;
+        gap: 48px;
     }
-    
+
     .hero-content h1 {
-        font-size: 56px;
+        font-size: 42px;
     }
-    
+
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .hero-image {
@@ -882,7 +947,7 @@ body {
     }
 
     .phones-img {
-        width: 80%;
+        width: 85%;
         height: auto;
     }
 
@@ -890,150 +955,76 @@ body {
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
-        padding: 40px;
+        padding: 32px 24px;
     }
-    
+
     .features {
-        padding: 80px 40px;
+        padding: 60px 24px;
     }
 
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .miner-section {
         flex-direction: column;
-        padding: 80px 40px;
+        padding: 60px 24px;
         text-align: center;
     }
-    
+
     .miner-image img {
         width: 80%;
     }
 
+    .miner-features {
+        text-align: left;
+    }
+
     .expeditions {
-        padding: 80px 40px;
+        padding: 60px 24px;
     }
 
-    .expeditions-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .bottom-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .testimonials {
         grid-template-columns: repeat(2, 1fr);
-        padding: 40px;
+        padding: 40px 24px;
     }
-    
+
     .footer-content {
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
         text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .site-footer {
-        padding: 80px 40px 40px;
+        padding: 60px 24px 32px;
     }
 }
 
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(31, 23, 20, 0.98);
-        backdrop-filter: blur(10px);
-        transition: right 0.3s ease;
-        z-index: 999;
-        padding: 40px;
-        gap: 40px;
-    }
-
-    .nav-container.active {
-        right: 0;
-    }
-
-    .nav-links {
-        position: static;
-        transform: none;
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-    }
-
-    .nav-links a {
-        font-size: 20px;
-    }
-
-    .nav-actions {
-        flex-direction: column;
-        width: 100%;
-        max-width: 250px;
-    }
-
-    .nav-actions .btn {
-        text-align: center;
-    }
-
-    .logo {
-        top: -30px;
-        z-index: 1001;
-    }
-    
-    .logo-img {
-        height: 120px;
-    }
-
-    .hero-content h1 {
-        font-size: 42px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .expeditions-grid, .bottom-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .testimonials {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-    
-    .footer-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
+/* ── Mobile: 480px ── */
 @media (max-width: 480px) {
     .hero-content h1 {
         font-size: 32px;
     }
 
-    .section-header h2, .miner-content h2, .expeditions h2 {
-        font-size: 32px;
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
     }
-    
+
+    .section-header h2, .miner-content h2, .expeditions h2 {
+        font-size: 28px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
     .stats-strip {
         flex-direction: column;
         text-align: center;
@@ -1041,10 +1032,175 @@ body {
 
     .stat-item {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+    }
+
+    .expeditions-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .expedition-card {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
     }
 
     .avatars img {
         margin-left: -10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   CONFIRM POPUP
+========================= */
+
+.download-popup {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s ease;
+    z-index: 5000;
+}
+
+.download-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-box {
+    width: 90%;
+    max-width: 420px;
+
+    background: #1f1714;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 28px;
+
+    padding: 35px 30px;
+
+    position: relative;
+
+    text-align: center;
+
+    transform: scale(0.9);
+    transition: 0.3s ease;
+}
+
+.download-popup.active .popup-box {
+    transform: scale(1);
+}
+
+.close-popup {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+
+    background: none;
+    border: none;
+
+    color: rgba(255,255,255,0.7);
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+.popup-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.popup-content h2 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 14px;
+}
+
+.popup-content p {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.popup-btn {
+    flex: 1;
+
+    padding: 14px;
+    border-radius: 14px;
+
+    border: none;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 15px;
+
+    transition: 0.3s ease;
+}
+
+.cancel-btn {
+    background: #2d221d;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: #3a2c25;
+}
+
+.confirm-btn {
+    background: #ff8a1d;
+    color: white;
+}
+
+.confirm-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+
+    .popup-box {
+        padding: 30px 20px;
+    }
+
+    .popup-content h2 {
+        font-size: 26px;
+    }
+
+    .popup-buttons {
+        flex-direction: column;
     }
 }

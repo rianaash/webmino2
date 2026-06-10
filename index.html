@@ -12,28 +12,38 @@
     <div class="app-container">
         <!-- Logo -->
         <div class="logo">
-            <img src="assets/logooo.png" alt="" class="logo-img">
+            <img src="" alt="" class="logo-img">
         </div>
 
-        <!-- Navigation -->
+<!-- Navigation -->
 <nav class="navbar">
 
-    <div class="logo">
+    <div class="logoo">
         <a href="#hero">
-        <img src="assets/logo1.png" alt="Logo" class="logo-img">
+            <img src="assets/logo1.png" alt="Logo" class="logoo-img">
         </a>
     </div>
 
-    <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#miner-section">Focus Mode</a>
-        <a href="#expeditions">Challenges</a>
-        <a href="#testimonials">Testimonials</a>
+    <!-- Menu Container -->
+    <div class="nav-container" id="nav-menu">
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#miner-section">Focus Mode</a>
+            <a href="#expeditions">Challenges</a>
+            <a href="#testimonials">Testimonials</a>
+        </div>
+
+        <div class="nav-actions">
+            <a href="#" class="btn btn-primary">Download App</a>
+        </div>
+
     </div>
 
-    <div class="nav-actions">
-        <a href="#" class="btn btn-primary">Download App</a>
-    </div>
+    <!-- Hamburger Button -->
+    <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+    </button>
 
 </nav>
 
@@ -208,7 +218,7 @@
 
     <h2>Habit Expeditions</h2>
     <p>
-        Ready for a real challenge? Take on one of the 7/14/21-day quests and grow together.
+        Join themed challenges with thousands of other "Miners" and grow together.
     </p>
 
     <div class="expeditions-grid">
@@ -220,7 +230,7 @@
             </div>
 
             <h3>Start Your Habits</h3>
-            <p>Just 7 days to get started on your journey.</p>
+            <p>Join 1000 miners today on this journey.</p>
         </div>
 
         <!-- CARD 2 -->
@@ -230,7 +240,7 @@
             </div>
 
             <h3>No Phone Before Bed</h3>
-            <p>A 14-day challenge to improve sleep quality.</p>
+            <p>Join 840 miners today on this journey.</p>
         </div>
 
         <!-- CARD 3 -->
@@ -240,7 +250,7 @@
             </div>
 
             <h3>Deep Work Focus</h3>
-            <p>21 days of hardcore focus training.</p>
+            <p>Join 400 miners today on this journey.</p>
         </div>
 
         <!-- CARD 4 -->
@@ -250,7 +260,7 @@
             </div>
 
             <h3>Face Yoga</h3>
-            <p>A simple 5-min daily routine for glowing skin.</p>
+            <p>Join 590 miners today on this journey.</p>
         </div>
 
         <!-- CARD 5 -->
@@ -260,7 +270,7 @@
             </div>
 
             <h3>Gratitude Challenge</h3>
-            <p>Start writing down 3 things daily for 30 days.</p>
+            <p>Join 390 miners today on this journey.</p>
         </div>
 
     </div>
@@ -273,21 +283,21 @@
             <section class="testimonials" id="testimonials">
             <div class="testimonial-card">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Mino turned what was a tedious chore into an absolute blast. The reward system keeps me coming back every single morning!"</p>
+                <p>""Mino makes habit tracking feel like a cozy adventure. I actually look forward to checking in every morning.""</p>
                 <strong>Sarah J.</strong>
-                <span>Software Engineer</span>
+                <span>Designer</span>
             </div>
             <div class="testimonial-card">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"The visual design is gorgeous. It makes you actually want to open the app. The deep work feature has 10x'd my productivity."</p>
+                <p>""The focus mode is a game changer. I managed to finish my thesis 2 weeks early thanks to the digging mechanic.""</p>
                 <strong>Michael R.</strong>
                 <span>Freelance Designer</span>
             </div>
             <div class="testimonial-card">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                <p>"Finally an app that doesn't feel like a punishment to use. It's fun, easy to use, and I've kept a 30-day streak so far!"</p>
+                <p>""Finally an app that doesnt feel corporate or stressful. It understands the psychology of growth perfectly.""</p>
                 <strong>David K.</strong>
-                <span>Student</span>
+                <span>Software Engineering</span>
             </div>
         </section>
 
@@ -314,6 +324,43 @@
         </div>
     </div>
 
+    <!-- CONFIRM DOWNLOAD POPUP -->
+<div class="download-popup" id="downloadPopup">
+    <div class="popup-box">
+
+        <button class="close-popup" id="closePopup">
+            &times;
+        </button>
+
+        <div class="popup-content">
+
+            <div class="popup-icon">
+                📲
+            </div>
+
+            <h2>Download MINO App?</h2>
+
+            <p>
+                Are you sure you want to download
+                the MINO application and start your
+                productivity journey?
+            </p>
+
+            <div class="popup-buttons">
+
+                <button class="popup-btn cancel-btn" id="cancelPopup">
+                    Cancel
+                </button>
+
+                <button class="popup-btn confirm-btn">
+                    Yes, Download
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
     <script>
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
@@ -330,8 +377,7 @@
             }
         });
         
-    </script>
-    <script>
+
 window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
 
@@ -341,6 +387,42 @@ window.addEventListener("scroll", function () {
         navbar.classList.remove("scrolled");
     }
 });
+
+/* =========================
+   POPUP
+========================= */
+
+const downloadPopup = document.getElementById("downloadPopup");
+const closePopup = document.getElementById("closePopup");
+const cancelPopup = document.getElementById("cancelPopup");
+
+/* trigger button */
+document.querySelectorAll(".download-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+        downloadPopup.classList.add("active");
+    });
+
+});
+
+/* close popup */
+function closeDownloadPopup() {
+    downloadPopup.classList.remove("active");
+}
+
+closePopup.addEventListener("click", closeDownloadPopup);
+
+cancelPopup.addEventListener("click", closeDownloadPopup);
+
+/* click outside */
+downloadPopup.addEventListener("click", (e) => {
+
+    if (e.target === downloadPopup) {
+        closeDownloadPopup();
+    }
+
+});
 </script>
+
 </body>
 </html>
