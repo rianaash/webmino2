@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 <body>
     <div class="app-container">
@@ -35,7 +36,7 @@
         </div>
 
         <div class="nav-actions">
-            <a href="#" class="btn btn-primary">Download App</a>
+            <a href="#" class="btn btn-primary download-btn">Download App</a>
         </div>
 
     </div>
@@ -54,8 +55,8 @@
                 <h1>Build Habits<br>Win <span class="text-orange">Rewards</span></h1>
                 <p>Mino turns your daily discipline into a precious digital game. Build better habits, stay focused, and grow consistently through small daily actions.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-outline-thick">Download App</a>
-                    <a href="#" class="btn btn-outline-thick text-orange border-orange">Get Started</a>
+                    <a href="#" class="btn btn-outline-thick download-btn">Download App</a>
+                    <!-- <a href="#" class="btn btn-outline-thick text-orange border-orange">Get Started</a> -->
                 </div>
             </div>
             <div class="hero-image">
@@ -370,9 +371,7 @@
                     Cancel
                 </button>
 
-                <button class="popup-btn confirm-btn">
-                    Yes, Download
-                </button>
+                <button class="popup-btn confirm-btn" id="confirmDownload">Yes, Download</button>
 
             </div>
         </div>
@@ -413,6 +412,11 @@ window.addEventListener("scroll", function () {
 const downloadPopup = document.getElementById("downloadPopup");
 const closePopup = document.getElementById("closePopup");
 const cancelPopup = document.getElementById("cancelPopup");
+const confirmDownload = document.getElementById("confirmDownload");
+
+confirmDownload.addEventListener("click", () => {
+    window.location.href = "https://play.google.com";
+});
 
 /* trigger button */
 document.querySelectorAll(".download-btn").forEach(button => {
